@@ -1,8 +1,12 @@
 {
-  "extends": "idiomatic",
+  "extends": [
+    "idiomatic",
+    "plugin:react/recommended"
+  ],
   "parser": "babel-eslint",
   "plugins": [
-    "flowtype"
+    "flowtype",
+    "react"
   ],
   "rules": {
     "one-var": 0,
