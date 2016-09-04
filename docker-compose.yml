@@ -1,0 +1,19 @@
+version: '2'
+services:
+  app:
+    image: mhart/alpine-node:6
+    command: npm start
+    ports:
+      - "8080"
+    volumes:
+      - .:/app
+      - ~/.npm:/root/.npm
+    working_dir: /app
+
+  app_build:
+    image: mhart/alpine-node:6
+    command: npm run build
+    volumes:
+      - .:/app
+      - ~/.npm:/root/.npm
+    working_dir: /app

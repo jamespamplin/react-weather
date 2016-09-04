@@ -4,7 +4,10 @@
   "description": "Local weather",
   "main": "index.js",
   "scripts": {
+    "build": "npm run build-js",
+    "build-js": "echo TODO",
     "lint": "eslint .",
+    "start": "http-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "james@jamespamplin.com",
@@ -13,6 +16,7 @@
     "babel-eslint": "^6.1.2",
     "eslint": "^3.4.0",
     "eslint-config-idiomatic": "^2.1.0",
-    "eslint-plugin-flowtype": "^2.11.4"
+    "eslint-plugin-flowtype": "^2.11.4",
+    "http-server": "^0.9.0"
   }
 }
