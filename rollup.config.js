@@ -10,12 +10,12 @@ export default {
   moduleName: 'app',
   sourceMap: true,
   plugins: [
-    babel( { exclude: 'node_modules/**' } ),
     nodeResolve( { jsnext: true, main: true } ),
     replace( {
       // 'process.env.NODE_ENV': JSON.stringify('production')
       'process.env.NODE_ENV': JSON.stringify( 'dev' )
     } ),
-    commonjs()
+    commonjs( { include: 'node_modules/**' } ),
+    babel()
   ]
 };
