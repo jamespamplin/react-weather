@@ -5,18 +5,24 @@
   "main": "index.js",
   "scripts": {
     "build": "npm run build-js",
-    "build-js": "echo TODO",
+    "build-js": "rollup -c",
     "lint": "eslint .",
     "start": "http-server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "npm run build-js -- -w"
   },
   "author": "james@jamespamplin.com",
   "license": "MIT",
   "devDependencies": {
     "babel-eslint": "^6.1.2",
+    "babel-preset-es2015-rollup": "^1.2.0",
+    "babel-preset-react": "^6.11.1",
     "eslint": "^3.4.0",
     "eslint-config-idiomatic": "^2.1.0",
     "eslint-plugin-flowtype": "^2.11.4",
-    "http-server": "^0.9.0"
+    "http-server": "^0.9.0",
+    "rollup": "^0.34.13",
+    "rollup-plugin-babel": "^2.6.1",
+    "rollup-watch": "^2.5.0"
   }
 }

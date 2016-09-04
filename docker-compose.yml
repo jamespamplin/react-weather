@@ -12,7 +12,7 @@ services:
 
   app_build:
     image: mhart/alpine-node:6
-    command: npm run build
+    command: npm run watch
     volumes:
       - .:/app
       - ~/.npm:/root/.npm
