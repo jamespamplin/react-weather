@@ -35,22 +35,29 @@ export class WeatherItem {
   tempMin: string;
   tempMax: string;
   description: string;
+  iconUrl: string;
 
   // TODO: ICON
 
-  constructor( cityId: number, date: Date, tempMin: string, tempMax: string, description: string ) {
+  constructor( cityId: number, date: Date, tempMin: string, tempMax: string, description: string, iconUrl: string ) {
     this.key = `${cityId}_${date.getTime()}`;
     this.date = date;
     this.tempMin = tempMin;
     this.tempMax = tempMax;
     this.description = description;
+    this.iconUrl = iconUrl;
   }
 
   static fromOpenWeatherMapResponse( cityId: number, itemJSON: any ) {
     const { temp_max, temp_min } = itemJSON.main;
     const date = new Date( itemJSON.dt * 1000 );
-    const description = itemJSON.weather[ 0 ].description;
+    const { description, icon } = itemJSON.weather[ 0 ];
+    const iconUrl = getIconUrl( icon );
 
-    return new WeatherItem( cityId, date, temp_min, temp_max, description );
+    return new WeatherItem( cityId, date, temp_min, temp_max, description, iconUrl );
   }
+}
+
+function getIconUrl( iconKey: string ) {
+  return `http://openweathermap.org/img/w/${iconKey}.png`;
 }
