@@ -1,8 +1,10 @@
 # react-weather
 
-Local weather via OpenWeatherMap.
+http://react-weather.jamespamplin.com/
 
-Implemented in React.
+Local Weather (London just for now) via OpenWeatherMap.
+
+Implemented in React with Redux, with help from Flow, ESLint, Babel, and Rollup.
 
 ## Running locally
 
