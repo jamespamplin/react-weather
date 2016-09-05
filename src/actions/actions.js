@@ -11,49 +11,23 @@ export const actionTypes: Array<Symbol> = [
 // Note: can't get flow to restrict ActionType to actual action types
 type ActionType = Symbol;
 
-export class Action {
+export type Action = {
   type: ActionType;
   payload: any;
   error: boolean;
 }
 
-export class RequestWeatherUpdateAction extends Action {
-  static type: ActionType = REQUEST_WEATHER_UPDATE;
-
-  constructor( city: string ) {
-    super();
-    this.type = RequestWeatherUpdateAction.type;
-    this.payload = {
+export function requestWeatherUpdateAction( city: string ): Action {
+  return {
+    type: REQUEST_WEATHER_UPDATE,
+    payload: {
       city
-    };
-    this.error = false;
-  }
+    },
+    error: false
+  };
 }
 
-export class UpdateWeatherForCityAction extends Action {
-  static type: ActionType = UPDATE_WEATHER_FOR_CITY;
-
-  type: ActionType;
-
-  constructor( city: string, results: any ) {
-    super();
-    this.type = UpdateWeatherForCityAction.type;
-    this.payload = {
-      city,
-      results
-    };
-    this.error = false;
-  }
-
-}
-
-export function requestWeatherUpdateAction( city: string ): RequestWeatherUpdateAction {
-  return new RequestWeatherUpdateAction( city );
-}
-
-// TODO: actions need to be plain objects
-export function updateWeatherForCityAction( city: string, results: any ) {
-  // return new UpdateWeatherForCityAction( city, results );
+export function updateWeatherForCityAction( city: string, results: any ): Action {
   return {
     type: UPDATE_WEATHER_FOR_CITY,
     payload: {
