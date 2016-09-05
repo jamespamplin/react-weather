@@ -28,3 +28,15 @@ docker-compose port app 8080
 ```
 
 Last command will output the local port which will be running the web server, eg: http://localhost:32768
+
+## TODO
+
+- Error handling! eg: JSON format guarding, error responses, rate limits
+- Fix weird issue with source maps - they don't quite match up properly, might be a rollup issue
+- Tests...
+- City selection
+- Async redux actions
+- Make it pretty, responsive, svg icons
+- Render on server for progressive enhancement
+- CI + CD
+- Optimisations: minification, caching, https, service worker 
