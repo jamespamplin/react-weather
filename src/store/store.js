@@ -6,7 +6,10 @@ import type { Action } from '../actions/actions.js';
 
 type State = { results: Array<any>, city?: string };
 
-const initialState: State = { results: [] };
+const initialState: State = {
+  city: 'london',
+  results: []
+};
 
 function reducers( state: State = initialState, action: Action ): State {
   switch ( action.type ) {
