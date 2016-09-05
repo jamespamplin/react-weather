@@ -13,6 +13,9 @@ import { WeatherResults, WeatherItem } from '../weather-models/weather-models.js
 
 type Props = { results: WeatherResults };
 
+const tableStyle = {
+  width: '100%'
+};
 
 export function WeatherCity( { results }: Props ) {
   if ( results == undefined ) {
@@ -26,7 +29,7 @@ export function WeatherCity( { results }: Props ) {
   return (
     <div>
       <h2>Weather for { results.cityName }</h2>
-      <table>
+      <table style={ tableStyle }>
         <tbody>
           {
             Object.keys( grouped ).map( key =>
