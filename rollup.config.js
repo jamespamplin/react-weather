@@ -15,7 +15,10 @@ export default {
       // 'process.env.NODE_ENV': JSON.stringify('production')
       'process.env.NODE_ENV': JSON.stringify( 'dev' )
     } ),
-    commonjs( { include: 'node_modules/**' } ),
+    commonjs( {
+      include: 'node_modules/**',
+      exclude: [ 'node_modules/moment/**', 'node_modules/lodash-es/**' ]
+    } ),
     babel()
   ]
 };

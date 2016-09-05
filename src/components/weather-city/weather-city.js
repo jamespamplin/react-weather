@@ -5,10 +5,11 @@
 /* @flow */
 
 import React from 'react';
+import moment from 'moment';
 
 import { WeatherDayForcast } from '../weather-day-forcast/weather-day-forcast.js';
 
-import { WeatherResults } from '../weather-models/weather-models.js';
+import { WeatherResults, WeatherItem } from '../weather-models/weather-models.js';
 
 type Props = { results: WeatherResults };
 
@@ -21,16 +22,37 @@ export function WeatherCity( { results }: Props ) {
   }
 
   const items = results.items || [];
+  const grouped = items ? results.getItemsByDay() : {};
   return (
     <div>
       <h2>Weather for { results.cityName }</h2>
-      <ol>
-        {
-          items.map( data =>
-            <WeatherDayForcast { ...data } />
-          )
-        }
-      </ol>
+      <table>
+        <tbody>
+          {
+            Object.keys( grouped ).map( key =>
+              <WeatherRow key={ key } date={ key } items={ grouped[ key ] } />
+            )
+          }
+        </tbody>
+      </table>
     </div>
   )
+}
+
+function WeatherRow( { date, items }: { date: string, items: Array<WeatherItem> } ) {
+  const formattedDate = moment( date ).format( 'dddd DD MMM YYYY' );
+  return (
+    <tr>
+      <th>{ formattedDate }</th>
+      {
+        items.map( data =>
+          <WeatherDayForcast { ...cloneForProps( data ) } />
+        )
+      }
+    </tr>
+  );
+}
+
+function cloneForProps( obj ) {
+  return Object.assign( {}, obj );
 }

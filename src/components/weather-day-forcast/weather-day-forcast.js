@@ -4,20 +4,20 @@
  * Display weather for a single day.
  */
 
-
-
 import React from 'react';
+import moment from 'moment';
 
-// type WeatherData = { date: Date, tempMin: number, tempMax: number, desc: string };
-type Props = { date: string, tempMin: number, tempMax: number, description: string };
+type Props = { date: Date, tempMin: string, tempMax: string, description: string };
 
 export function WeatherDayForcast( { date, tempMin, tempMax, description }: Props ) {
+  const time: string = moment( date ).format( 'HH:mm' );
+
   return (
-    <li>
-      <p>Date: { date }</p>
+    <td>
+      <p>{ time }</p>
+      <p>{ description }</p>
       <p>Min: { tempMin }</p>
       <p>Max: { tempMax }</p>
-      <p>Description: { description }</p>
-    </li>
+    </td>
   )
 }
