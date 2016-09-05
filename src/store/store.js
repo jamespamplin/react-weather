@@ -1,14 +1,17 @@
 /* @flow */
 
 import { createStore } from 'redux';
+
+import { WeatherResults } from '../components/weather-models/weather-models.js';
+
 import { UPDATE_WEATHER_FOR_CITY } from '../actions/actions.js';
 import type { Action } from '../actions/actions.js';
 
-type State = { results: Array<any>, city?: string };
+type State = { results: WeatherResults | void, city?: string };
 
 const initialState: State = {
   city: 'london',
-  results: []
+  results: undefined
 };
 
 function reducers( state: State = initialState, action: Action ): State {

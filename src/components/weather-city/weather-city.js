@@ -8,16 +8,25 @@ import React from 'react';
 
 import { WeatherDayForcast } from '../weather-day-forcast/weather-day-forcast.js';
 
-type Props = { city: string, results: Array<any> };
+import { WeatherResults } from '../weather-models/weather-models.js';
+
+type Props = { results: WeatherResults };
 
 
-export function WeatherCity( { city, results }: Props ) {
+export function WeatherCity( { results }: Props ) {
+  if ( results == undefined ) {
+    return (
+      <div>Weather not loaded yet</div>
+    );
+  }
+
+  const items = results.items || [];
   return (
     <div>
-      <h2>Weather for: { city }</h2>
+      <h2>Weather for { results.cityName }</h2>
       <ol>
         {
-          results.map( data =>
+          items.map( data =>
             <WeatherDayForcast { ...data } />
           )
         }
